@@ -1,0 +1,6 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <conio.h>
+#include <windows.h>
+int main(){double _0xa=0,_0xb=0,_0x=0,_0y=1.5,_0z=8,_0v=0;double _0V[]={-1,-1,-1,1,-1,-1,1,1,-1,-1,1,-1,-1,-1,1,1,-1,1,1,1,1,-1,1,1};int _0E[][2]={{0,1},{1,2},{2,3},{3,0},{4,5},{5,6},{6,7},{7,4},{0,4},{1,5},{2,6},{3,7}};const int W=80,H=25;std::cout<<"WASD=move SPACE=jump Q=quit\n";while(true){if(_kbhit()){char _k=_getch();if(_k=='q')break;double C=cos(_0xa),S=sin(_0xa);if(_k=='w'){_0x+=S*.5;_0z+=C*.5;}if(_k=='s'){_0x-=S*.5;_0z-=C*.5;}if(_k=='a'){_0x-=C*.5;_0z+=S*.5;}if(_k=='d'){_0x+=C*.5;_0z-=S*.5;}if(_k==' '&&_0y<=1.51)_0v=1.2;if(_k=='j')_0xa+=.1;if(_k=='l')_0xa-=.1;} _0v-=.08;if(_0y>1.5)_0y+=_0v;else{_0y=1.5;_0v=0;} char _0s[25][81];for(int y=0;y<H;y++)for(int x=0;x<W;x++)_0s[y][x]=' ';for(int e=0;e<12;e++){for(double t=0;t<=1;t+=.05){int _i=_0E[e][0]*3,_j=_0E[e][1]*3;double _px=_0V[_i]+(_0V[_j]-_0V[_i])*t+_0x,_py=_0V[_i+1]+(_0V[_j+1]-_0V[_i+1])*t,_pz=_0V[_i+2]+(_0V[_j+2]-_0V[_i+2])*t+_0z;double C=cos(_0xa),S=sin(_0xa),x1=_px*C-_pz*S,z1=_px*S+_pz*C,y1=_py-_0y,z2=z1+8;if(z2<.1)continue;double f=30/max(.1,z2);int sx=(int)(W/2+x1*f),sy=(int)(H/2-y1*f);if(sx>=0&&sx<W&&sy>=0&&sy<H)_0s[sy][sx]='#';}} system("cls");for(int y=0;y<H;y++){_0s[y][W]=0;std::cout<<_0s[y]<<"\n";} Sleep(50);}return 0;}
